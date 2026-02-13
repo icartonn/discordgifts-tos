@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - Discord Bot</title>
+    <title>Terms & Privacy - Discord Bot</title>
     <style>
         body {
             background-color: #313338;
@@ -17,51 +17,120 @@
         }
         .container {
             max-width: 800px;
+            width: 100%;
             background-color: #2b2d31;
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-        h1 { color: #ffffff; border-bottom: 1px solid #4e5058; padding-bottom: 10px; }
-        h2 { color: #ffffff; margin-top: 30px; font-size: 1.4em; }
-        .date { color: #949ba4; font-size: 0.9em; margin-bottom: 30px; }
-        p, li { margin-bottom: 15px; }
+        /* Табы */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #4e5058;
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #949ba4;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 5px 15px;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            color: #5865f2;
+            border-bottom: 2px solid #5865f2;
+        }
+        .tab-btn:hover { color: #ffffff; }
+
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        h1 { color: #ffffff; margin-top: 0; }
+        h2 { color: #ffffff; margin-top: 30px; font-size: 1.3em; border-left: 4px solid #5865f2; padding-left: 15px; }
+        .date { color: #949ba4; font-size: 0.9em; margin-bottom: 20px; }
+        p, li { margin-bottom: 12px; }
         ul { padding-left: 20px; }
+        code { background: #1e1f22; padding: 2px 6px; border-radius: 4px; color: #e3e5e8; }
         .highlight { color: #5865f2; font-weight: bold; }
-        .footer { margin-top: 50px; font-size: 0.8em; color: #949ba4; text-align: center; }
+        .footer { margin-top: 50px; font-size: 0.8em; color: #949ba4; text-align: center; border-top: 1px solid #4e5058; pt: 20px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Условия использования (ToS)</h1>
-        <div class="date">Дата последнего обновления: 11 февраля 2026 г.</div>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('tos')">Условия использования (ToS)</button>
+            <button class="tab-btn" onclick="openTab('privacy')">Конфиденциальность (Privacy)</button>
+        </div>
 
-        <h2>1. Общие положения</h2>
-        <p>Используя данный Discord-бот (далее — «Бот»), вы соглашаетесь с настоящими Условиями использования. Если вы не согласны с каким-либо пунктом, пожалуйста, прекратите использование Бота и удалите свои данные через настройки Discord.</p>
+        <div id="tos" class="content-section active">
+            <h1>Условия использования</h1>
+            <div class="date">Редакция от: 13 февраля 2026 г.</div>
 
-        <h2>2. Виртуальная валюта и экономика</h2>
-        <ul>
-            <li><strong>Звезды (Stars):</strong> Используется виртуальная валюта, не имеющая реальной ценности.</li>
-            <li><strong>Рыночные цены:</strong> Цены в <code>/shop</code> динамические (спрос/предложение).</li>
-            <li><strong>Комиссия:</strong> При продаже предметов взимается системная комиссия в размере <span class="highlight">15%</span> (вы получаете 85% от стоимости).</li>
-            <li><strong>Переводы:</strong> Минимальная сумма перевода между пользователями — <span class="highlight">10 Звезд</span>.</li>
-        </ul>
+            <h2>1. Общие положения</h2>
+            <p>Используя данный Discord-бот, вы подтверждаете свое согласие с данными правилами. Бот предоставляет развлекательный сервис, включающий систему подарков, кейсов и виртуальный маркетплейс NFT.</p>
 
-        <h2>3. Кейсы и игровые механики</h2>
-        <p>Открытие кейсов (<code>/cases</code>) — вероятностный процесс. Бесплатный кейс доступен раз в <span class="highlight">24 часа</span>. Таймер отсчитывается с момента последнего использования.</p>
+            <h2>2. Виртуальные активы (Звезды и NFT)</h2>
+            <ul>
+                <li><strong>Статус валюты:</strong> Валюта "Звезды" является внутриигровым ресурсом. Она <strong>не имеет реальной денежной стоимости</strong> и не может быть выведена, обменяна на фиатные деньги или криптовалюту.</li>
+                <li><strong>NFT-подарки:</strong> Покупка и продажа NFT в магазине бота (<code>/nft shop</code>) осуществляется исключительно в личных развлекательных целях.</li>
+                <li><strong>Механика кейсов:</strong> Открытие кейсов является имитацией вероятностного процесса. Поскольку выигрыш нельзя обменять на реальные деньги, данная активность не является азартной игрой.</li>
+                <li><strong>Комиссия:</strong> При перепродаже NFT взимается системный сбор в размере <span class="highlight">15%</span>.</li>
+            </ul>
 
-        <h2>4. Пополнение баланса и возврат</h2>
-        <p>Пополнение через внешние шлюзы расценивается как добровольное пожертвование. Возврат средств (Refund) не предусмотрен. В случае сбоев обращаться к владельцу: <code style="color: #fff;">ID 1371480264630472745</code>.</p>
+            <h2>3. Оплата и CryptoBot</h2>
+            <p>Все платежи обрабатываются через <strong>CryptoBot API</strong>. Пополняя баланс, вы совершаете добровольное пожертвование (Donation) в пользу развития проекта. Цифровые товары (Звезды) начисляются мгновенно после подтверждения транзакции. Возврат средств не предусмотрен ввиду специфики цифрового контента.</p>
 
-        <h2>5. Ограничения и блокировки</h2>
-        <p>Администрация имеет право заблокировать доступ (бан) за использование багов, мошенничество или абуз реферальной системы.</p>
+            <h2>4. Правила поведения</h2>
+            <p>Запрещено использование багов для накрутки баланса, абуз реферальной системы и попытки дестабилизации экономики бота. Администрация оставляет за собой право обнулить баланс или заблокировать доступ (ID: <code>1371480264630472745</code>) при выявлении нарушений.</p>
+        </div>
 
-        <h2>6. Отказ от ответственности</h2>
-        <p>Бот предоставляется по принципу «как есть» (as is). Разработчик не несет ответственности за технические сбои или потерю данных.</p>
+        <div id="privacy" class="content-section">
+            <h1>Политика конфиденциальности</h1>
+            <div class="date">Редакция от: 13 февраля 2026 г.</div>
+
+            <h2>1. Какие данные мы собираем?</h2>
+            <p>Для корректной работы экономики и системы подарков, бот хранит следующие данные:</p>
+            <ul>
+                <li>Ваш уникальный идентификатор Discord (User ID).</li>
+                <li>Идентификаторы серверов (Guild ID), где вы используете бота.</li>
+                <li>Публичное имя пользователя (Username) для отображения в таблице лидеров.</li>
+                <li>Историю транзакций, покупок NFT и открытий кейсов.</li>
+            </ul>
+
+            <h2>2. Использование данных</h2>
+            <p>Данные используются исключительно для функционирования игровых механик. Мы не передаем вашу информацию третьим лицам и не используем её для рассылок вне платформы Discord.</p>
+
+            <h2>3. Безопасность платежей</h2>
+            <p>Бот не имеет доступа к вашим кошелькам, паролям или личным данным в системе CryptoBot. Взаимодействие происходит по зашифрованному протоколу API, который передает боту только статус успешности платежа.</p>
+
+            <h2>4. Удаление данных</h2>
+            <p>Вы можете прекратить использование бота в любой момент. Для полного удаления ваших данных из базы данных бота (обнуление профиля), обратитесь в службу поддержки через официальный сервер или к владельцу напрямую.</p>
+        </div>
 
         <div class="footer">
-            Настоящий документ составлен на русском языке.
+            Документация Discord Bot &copy; 2026. Разработано для удобства пользователей.
         </div>
     </div>
+
+    <script>
+        function openTab(tabId) {
+            // Скрываем все секции
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(s => s.classList.remove('active'));
+
+            // Убираем активный класс у кнопок
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(b => b.classList.remove('active'));
+
+            // Показываем нужную
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
 </body>
 </html>
